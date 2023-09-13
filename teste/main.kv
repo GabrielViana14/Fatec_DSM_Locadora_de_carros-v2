@@ -1,0 +1,78 @@
+MDBoxLayout:
+    orientation: 'vertical'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'img/background.png'
+    MDFloatLayout:
+
+        Image:
+            source: 'img/logo_texto.png'
+            size_hint: None,None
+            size: 150,300
+            pos_hint: {'center_x':.5,'center_y':.94}
+
+        MDLabel:
+            text: 'Mais proximo de você'
+            halign: 'center'
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            font_style: 'H5'
+            pos_hint: {'center_x':.5,'center_y':.7}
+
+        MDTextField:
+            mode: 'round'
+            hint_text:'Onde deseja retirar o carro?'
+            hint_text_color_normal: 'gray'
+            pos_hint: {'center_x':.5,'center_y':.5}
+            size_hint_x: .9
+            icon_left: 'map'
+            icon_left_color_normal: (0.6, 0.6, 0.902, 1)
+            radius: 10,10,10,0
+
+    MDBoxLayout:
+        md_bg_color: (1, 1, 1, 0.5)
+        size_hint: 1,.12
+        pos_hint_x: .5
+
+        MDFloatLayout:
+            size_hint: 1,1
+            orientation: 'horizontal'
+            MDIconButton:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                icon: 'car'
+                icon_size: '40sp'
+                theme_icon_color: 'Custom'
+                icon_color: 'black'
+            MDLabel:
+                text: 'Categorias'
+                pos_hint: {"center_x": .5, "center_y": .3}
+                adaptive_size: True
+        MDFloatLayout:
+            size_hint: 1,1
+            orientation: 'horizontal'
+            MDIconButton:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                icon: 'map-marker-radius'
+                icon_size: '40sp'
+                theme_icon_color: 'Custom'
+                icon_color: 'black'
+            MDLabel:
+                text: 'Localizar'
+                pos_hint: {"center_x": .5, "center_y": .3}
+                adaptive_size: True
+        MDFloatLayout:
+            size_hint: 1,1
+            orientation: 'horizontal'
+            MDIconButton:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                icon: 'account-circle-outline'
+                icon_size: '40sp'
+                theme_icon_color: 'Custom'
+                icon_color: 'black'
+            MDLabel:
+                text: 'Localizar'
+                pos_hint: {"center_x": .5, "center_y": .3}
+                adaptive_size: True
+
