@@ -1,0 +1,59 @@
+MDFloatLayout
+    Image:
+        source: "kv/img/background.png"
+        allow_stretch: True
+        keep_ratio: False
+        size: root.width, root.height
+    MDFloatLayout
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            RoundedRectangle:
+                size: 0.9*self.width, 0.9*self.height
+                pos: self.center_x - 0.45*self.width, self.center_y - 0.45*self.height
+                radius: [20,20,20,20]
+
+        MDTextField
+            id: tf_email
+            mode: 'rectangle'
+            hint_text: 'E-mail'
+            size_hint_x: .5
+            pos_hint: {'center_x':.5, 'center_y': .8}
+            radius: [10,10,0,0]
+        MDTextField
+            id: tf_senha
+            mode: 'rectangle'
+            hint_text: 'Senha'
+            size_hint_x: .5
+            pos_hint: {'center_x':.5, 'center_y': .7}
+            radius: [10,10,0,0]
+
+
+
+    MDBoxLayout
+        size_hint_x: 1
+        size_hint_y: .1
+
+        MDFloatLayout
+            id: menu_bottom
+            md_bg_color: 0,1,1,1
+            MDIconButton:
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                icon: 'menu'
+                icon_size: '48sp'
+
+        MDFloatLayout
+            md_bg_color: 1,0,1,1
+            MDIconButton:
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                icon: 'home'
+                icon_size: '48sp'
+
+        MDFloatLayout
+            md_bg_color: 0,1,1,1
+            MDIconButton:
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                icon: 'car'
+                icon_size: '48sp'
