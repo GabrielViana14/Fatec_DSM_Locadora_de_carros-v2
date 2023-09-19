@@ -56,6 +56,7 @@ class MyApp (MDApp):
             if resultados[i]['email'] == email.text:
                 if resultados[i]['senha'] == senha.text:
                     print("Você está logado")
+                    self.root.current = 'cadastro'
 
 
 
