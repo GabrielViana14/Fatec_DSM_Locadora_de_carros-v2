@@ -16,7 +16,7 @@ class Principal(Screen):
 
 class MyApp (MDApp):
     def build(self):
-        kv_files = ['kv/main.kv', 'kv/TelaInicial.kv']
+        kv_files = ['kv/login.kv', 'kv/TelaInicial.kv']
         for kv_file in kv_files:
             Builder.load_file(kv_file)
 

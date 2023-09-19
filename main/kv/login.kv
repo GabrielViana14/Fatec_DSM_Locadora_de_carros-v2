@@ -1,0 +1,91 @@
+<TelaLogin>:
+    name: 'login'
+    MDFloatLayout:
+        orientation: 'vertical'
+        FitImage:
+            source: "kv/img/background_login.png"
+            size: root.width, root.height
+
+        MDFloatLayout:
+            canvas:
+                Color:
+                    rgba: 1, 0, 0, 0.4
+                RoundedRectangle:
+                    size: 0.93*self.width, 0.73*self.height
+                    pos: self.center_x - 0.465*self.width, self.center_y - 0.365*self.height
+                    radius: [20,20,20,20]
+
+            MDFloatLayout:
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 0.6
+                    RoundedRectangle:
+                        size: 0.9*self.width, 0.7*self.height
+                        pos: self.center_x - 0.45*self.width, self.center_y - 0.35*self.height
+                        radius: [20,20,20,20]
+
+                MDIconButton:
+                    icon: 'kv/img/logo_red-white.png'
+                    pos_hint: {'center_x':.5,'center_y':.865}
+                    icon_size: '100sp'
+
+                MDTextField:
+                    id: 'tf_email'
+                    size_hint_x: .8
+                    hint_text: 'E-mail'
+                    pos_hint: {'center_x':.5, 'center_y':.7}
+                    icon_right_color_normal: 'blue'
+                    icon_right_color_focus: 'blue'
+                    hint_text_color_normal: 'blue'
+                    hint_text_color_focus: 'blue'
+                    line_color_normal: 'blue'
+                    line_color_focus: 'blue'
+
+                MDTextField:
+                    id: tf_senha
+                    password: True
+                    size_hint_x: .8
+                    hint_text: 'Senha'
+                    pos_hint: {'center_x':.5, 'center_y':.6}
+                    icon_right_color_normal: 'blue'
+                    icon_right_color_focus: 'blue'
+                    hint_text_color_normal: 'blue'
+                    hint_text_color_focus: 'blue'
+                    line_color_normal: 'blue'
+                    line_color_focus: 'blue'
+
+                MDIconButton:
+                    icon: 'account-outline'
+                    theme_text_color: 'Custom'
+                    text_color: 'blue'
+                    pos_hint: {'center_x': .872, 'center_y': .71}
+
+                MDIconButton:
+                    icon: 'lock-outline'
+                    theme_text_color: 'Custom'
+                    text_color: 'blue'
+                    pos_hint: {'center_x': .872, 'center_y': .61}
+                    on_release:
+                        self.icon = 'lock-open-outline' if self.icon == 'lock-outline' else 'lock-outline'
+                        tf_senha.password = False if tf_senha.password is True else True
+
+                MDTextButton:
+                    text: 'Esqueci minha senha'
+                    custom_color: 'red'
+                    pos_hint: {'center_x':.3,'center_y':.5}
+
+                MDRaisedButton:
+                    text: 'Login'
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    md_bg_color: 'red'
+                    size_hint: .8,.05
+                    font_size: '26sp'
+                    on_release:
+                        app.login()
+
+                MDRaisedButton:
+                    text: 'Não tenho uma conta'
+                    pos_hint: {'center_x': .5, 'center_y': .3}
+                    md_bg_color: 'indigo'
+                    size_hint: .4,.05
+                    font_size: '18sp'
