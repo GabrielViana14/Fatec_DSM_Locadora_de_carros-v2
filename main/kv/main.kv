@@ -1,61 +1,63 @@
-
-MDFloatLayout:
-    orientation: 'vertical'
-    Image:
-        source: "kv/img/background.png"
-        allow_stretch: True
-        keep_ratio: False
-        size: root.width, root.height
-
-
+<TelaLogin>:
+    name: 'login'
     MDFloatLayout:
-        pos_hint: {'center_x':.5,'center_y':.5}
-
-        canvas:
-            Color:
-                rgba: 1, 1, 1, 0.5
-            RoundedRectangle:
-                size: 0.8*self.width, 0.6*self.height
-                pos: self.center_x - 0.4*self.width, self.center_y - 0.4*self.height
-                radius: [20,20,20,20]
+        orientation: 'vertical'
+        Image:
+            source: "kv/img/background.png"
+            allow_stretch: True
+            keep_ratio: False
+            size: root.width, root.height
 
 
-        MDIconButton:
-            icon: "kv/img/logo.png"
-            pos_hint: {'center_x':.5,'center_y':.7}
-            icon_size: '78sp'
-
-        MDTextField:
-            id: tf_email
-            hint_text: "E-mail"
-            mode: 'fill'
-            radius: [10,10,10,10]
-            size_hint_x: .7
+        MDFloatLayout:
             pos_hint: {'center_x':.5,'center_y':.5}
 
-        MDTextField:
-            id: tf_senha
-            hint_text: "Senha"
-            password: True
-            mode: 'fill'
-            radius: [10,10,10,10]
-            size_hint_x: .7
-            pos_hint: {'center_x':.5,'center_y':.4}
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 0.5
+                RoundedRectangle:
+                    size: 0.8*self.width, 0.6*self.height
+                    pos: self.center_x - 0.4*self.width, self.center_y - 0.4*self.height
+                    radius: [20,20,20,20]
 
-        MDIconButton:
-            icon: 'eye-off'
-            pos_hint: {'center_x':.8,'center_y':.4}
-            on_release:
-                self.icon = 'eye' if self.icon == 'eye-off' else 'eye-off'
-                tx_senha.password = False if tx_senha.password is True else True
 
-        MDTextButton:
-            text:'Esqueceu a senha?'
-            size_hint_x: .7
-            pos_hint: {'center_x':.5,'center_y':.3}
-            halign: 'left'
+            MDIconButton:
+                icon: "kv/img/logo.png"
+                pos_hint: {'center_x':.5,'center_y':.7}
+                icon_size: '78sp'
 
-        MDRaisedButton:
-            text: "Logina"
-            pos_hint: {'center_x':.5,'center_y':.2}
-            size_hint: .7,.05
+            MDTextField:
+                id: tf_email
+                hint_text: "E-mail"
+                mode: 'fill'
+                radius: [10,10,10,10]
+                size_hint_x: .7
+                pos_hint: {'center_x':.5,'center_y':.5}
+
+            MDTextField:
+                id: tf_senha
+                hint_text: "Senha"
+                password: True
+                mode: 'fill'
+                radius: [10,10,10,10]
+                size_hint_x: .7
+                pos_hint: {'center_x':.5,'center_y':.4}
+
+            MDIconButton:
+                icon: 'eye-off'
+                pos_hint: {'center_x':.8,'center_y':.4}
+                on_release:
+                    self.icon = 'eye' if self.icon == 'eye-off' else 'eye-off'
+                    tf_senha.password = False if tf_senha.password is True else True
+
+            MDTextButton:
+                text:'Esqueceu a senha?'
+                size_hint_x: .7
+                pos_hint: {'center_x':.5,'center_y':.3}
+                halign: 'left'
+
+            MDRaisedButton:
+                text: "Login"
+                pos_hint: {'center_x':.5,'center_y':.2}
+                size_hint: .7,.05
+                on_release: app.login()
