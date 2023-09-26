@@ -2,9 +2,13 @@
 MDFloatLayout:
     #:import MapSource kivy_garden.mapview.MapSource
     Mapview:
-        lat: -23.666293
-        log: -46.551831
-        zoom: 13
+        lat: -23
+        lon: -46
+        zoom: 10
+        on_lat:
+            print('lat', self.lat)
+        on_lon:
+            print('lon',self.lon)
 
     MDBoxLayout:
         size_hint: 1, .1
