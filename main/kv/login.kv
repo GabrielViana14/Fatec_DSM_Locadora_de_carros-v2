@@ -30,7 +30,7 @@
                     icon_size: '100sp'
 
                 MDTextField:
-                    id: 'tf_email'
+                    id: tf_email
                     size_hint_x: .8
                     hint_text: 'E-mail'
                     pos_hint: {'center_x':.5, 'center_y':.7}
@@ -81,7 +81,7 @@
                     size_hint: .8,.05
                     font_size: '26sp'
                     on_release:
-                        app.login()
+                        root.login()
 
                 MDRaisedButton:
                     text: 'Não tenho uma conta'
@@ -89,3 +89,5 @@
                     md_bg_color: 'indigo'
                     size_hint: .4,.05
                     font_size: '18sp'
+                    on_release:
+                        root.ir_cadastro()

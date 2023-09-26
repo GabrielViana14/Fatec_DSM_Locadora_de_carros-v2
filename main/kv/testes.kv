@@ -1,0 +1,51 @@
+MDFloatLayout:
+    FitImage:
+        source: 'kv/img/background.png'
+        size: root.width, .5
+    MDFloatLayout:
+        MDTextField:
+            mode: 'fill'
+            hint_text: 'Onde'
+            size_hint_x: .3
+            pos_hint: {'center_x':.2,'center_y':.7}
+            radius: [30,0,0,30]
+
+        MDFlatButton:
+            id: btn_data_inicio
+            text: 'De:'
+            size_hint: .2,.1
+            pos_hint: {'center_x':.4,'center_y':.7}
+            radius: [0,0,0,0]
+            halign: 'left'
+            md_bg_color: 'lightgray'
+            on_release:
+                app.select_date_inicio(self.id)
+
+        MDFlatButton:
+            id: btn_data_fim
+            text: "Até: "
+            size_hint: .2,.1
+            pos_hint: {'center_x':.6,'center_y':.7}
+            md_bg_color: 'lightgray'
+            radius: [0,0,0,0]
+            halign: 'left'
+            on_release:
+                app.select_date_fim(self.id)
+
+
+    MDFloatLayout:
+        size_hint: 1, .1
+        md_bg_color: [0.207,0.207,0.710,1]
+
+        MDFloatLayout:
+            MDIconButton:
+                icon: 'kv/img/icon_procurar.png'
+                icon_size: '27sp'
+                pos_hint: {'center_x':.5,'center_y':.6}
+
+            MDLabel:
+                text: 'Procurar'
+                size_hint_y: .25
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: (0.886,0.322,0.270,1)

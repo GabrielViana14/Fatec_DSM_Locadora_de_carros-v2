@@ -1,0 +1,29 @@
+
+MDFloatLayout:
+    #:import MapSource kivy_garden.mapview.MapSource
+    Mapview:
+        lat: -23.666293
+        log: -46.551831
+        zoom: 13
+
+    MDBoxLayout:
+        size_hint: 1, .1
+        md_bg_color: [0.207,0.207,0.710,1]
+
+        MDFloatLayout:
+            MDIconButton:
+                icon: 'kv/img/icon_procurar.png'
+                icon_size: dp(30)
+                pos_hint: {'center_x':.5,'center_y':.6}
+
+        MDFloatLayout:
+            MDIconButton:
+                icon: 'kv/img/icon_mapa.png'
+                icon_size: dp(30)
+                pos_hint: {'center_x':.5,'center_y':.6}
+
+        MDFloatLayout:
+            MDIconButton:
+                icon: 'kv/img/icon_mapa.png'
+                icon_size: dp(30)
+                pos_hint: {'center_x':.5,'center_y':.6}
