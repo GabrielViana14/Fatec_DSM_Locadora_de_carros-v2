@@ -2,7 +2,8 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy_garden.mapview import MapView
 
-class Mapview(MapView):
+
+class Mapa(MapView):
     pass
 
 
