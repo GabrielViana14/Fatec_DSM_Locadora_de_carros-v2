@@ -1,33 +1,94 @@
+<Mapa>:
+    name: 'mapa'
+    MDFloatLayout:
+        MapView:
+            lat: -23.66637707603465
+            lon: -46.55172040137245
+            zoom: 20
 
-MDFloatLayout:
-    #:import MapSource kivy_garden.mapview.MapSource
-    Mapview:
-        lat: -23
-        lon: -46
-        zoom: 10
-        on_lat:
-            print('lat', self.lat)
-        on_lon:
-            print('lon',self.lon)
+            MapMarkerPopup:
+                lat: -23.66637707603465
+                lon: -46.55172040137245
+                popup_size: dp(230),dp(230)
+                Bubble:
+                    MDFloatLayout:
+                        Image:
+                            source:'kv/img/carro_teste.jpg'
 
-    MDBoxLayout:
-        size_hint: 1, .1
-        md_bg_color: [0.207,0.207,0.710,1]
+        MDTextField:
+            id: tf_pesquisa
+            mode: 'fill'
+            size_hint: .8,.1
+            pos_hint: {'center_x':.5, 'center_y':.9}
+            radius: [30,30,30,30]
+            fill_color_normal: 'white'
+            fill_color_focus: 'white'
 
-        MDFloatLayout:
-            MDIconButton:
-                icon: 'kv/img/icon_procurar.png'
-                icon_size: dp(30)
-                pos_hint: {'center_x':.5,'center_y':.6}
+        MDIconButton:
+            icon: 'kv/img/icon_procurar.png'
+            pos_hint: {'center_x':.85, 'center_y':.9}
+            on_release:
+                root.pesquisa_local()
 
-        MDFloatLayout:
-            MDIconButton:
-                icon: 'kv/img/icon_mapa.png'
-                icon_size: dp(30)
-                pos_hint: {'center_x':.5,'center_y':.6}
 
-        MDFloatLayout:
-            MDIconButton:
-                icon: 'kv/img/icon_mapa.png'
-                icon_size: dp(30)
-                pos_hint: {'center_x':.5,'center_y':.6}
+        MDBoxLayout:
+            id: Barra_inferior
+            size_hint: 1, .1
+            md_bg_color: [0.207,0.207,0.710,1]
+
+            MDFloatLayout:
+                MDIconButton:
+                    icon: 'home-outline'
+                    icon_size: dp(30)
+                    theme_icon_color: 'Custom'
+                    icon_color: (0.886,0.322,0.270,1)
+                    pos_hint: {'center_x':.5,'center_y':.6}
+                MDTextButton:
+                    text: 'Home'
+                    pos_hint: {'center_x':.5,'center_y':.2}
+                    theme_text_color: 'Custom'
+                    text_color: (0.886,0.322,0.270,1)
+
+            MDFloatLayout:
+                MDIconButton:
+                    icon: 'magnify'
+                    icon_size: dp(30)
+                    theme_icon_color: 'Custom'
+                    icon_color: (0.886,0.322,0.270,1)
+                    pos_hint: {'center_x':.5,'center_y':.6}
+                MDTextButton:
+                    text: 'Procurar'
+                    pos_hint: {'center_x':.5,'center_y':.2}
+                    theme_text_color: 'Custom'
+                    text_color: (0.886,0.322,0.270,1)
+
+            MDFloatLayout:
+                MDIconButton:
+                    icon: 'map-outline'
+                    icon_size: dp(30)
+                    theme_icon_color: 'Custom'
+                    icon_color: (0.886,0.322,0.270,1)
+                    pos_hint: {'center_x':.5,'center_y':.6}
+                    on_release:
+                        root.ir_mapa()
+
+                MDTextButton:
+                    text: 'Mapa'
+                    pos_hint: {'center_x':.5,'center_y':.2}
+                    theme_text_color: 'Custom'
+                    text_color: (0.886,0.322,0.270,1)
+
+            MDFloatLayout:
+                MDIconButton:
+                    icon: 'car-search-outline'
+                    icon_size: dp(30)
+                    theme_icon_color: 'Custom'
+                    icon_color: (0.886,0.322,0.270,1)
+                    pos_hint: {'center_x':.5,'center_y':.6}
+                    on_release:
+                        root.ir_cadastro()
+                MDTextButton:
+                    text: 'Cadastrar'
+                    pos_hint: {'center_x':.5,'center_y':.2}
+                    theme_text_color: 'Custom'
+                    text_color: (0.886,0.322,0.270,1)
