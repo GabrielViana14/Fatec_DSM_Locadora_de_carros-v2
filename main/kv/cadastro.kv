@@ -1,81 +1,199 @@
 <TelaCadastro>:
     name: 'cadastro'
     MDFloatLayout:
-        Image:
-            source: "kv/img/background.png"
-            allow_stretch: True
-            keep_ratio: False
-            size: root.width, root.height
-        MDFloatLayout:
+        MDBoxLayout:
             orientation: 'vertical'
-
-            canvas:
+            canvas.before:
                 Color:
-                    rgba: 1, 1, 1, 1
-                RoundedRectangle:
-                    size: 0.9*self.width, 0.9*self.height
-                    pos: self.center_x - 0.45*self.width, self.center_y - 0.45*self.height
-                    radius: [20,20,20,20]
+                    rgba: 1, 0.945, 0.941, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            MDBoxLayout:
+                spacing: 20
+                orientation: 'vertical'
+                MDScrollView:
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        pos_hint: {'center_x': .5}
+                        height: max(self.minimum_height, root.height)
 
-            MDLabel:
-                text: 'Cadastro'
-                pos_hint: {"center_y": .9}
-                halign: 'center'
-                font_style: 'H4'
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                size: 0.95*self.width, 0.99*self.height
+                                pos: self.center_x - 0.475*self.width, self.center_y - 0.5*self.height
+                                radius: [20,20,20,20]
 
-            MDTextField
-                id: tf_nome
-                mode: 'rectangle'
-                hint_text: 'Nome'
-                size_hint_x: .7
-                pos_hint: {'center_x':.5, 'center_y': .8}
-                radius: [10,10,0,0]
+                        MDLabel:
+                            text: 'Cadastro de frota'
+                            size_hint_y:None
+                            halign: 'center'
+                            font_style: 'H5'
 
-            MDTextField
-                id: tf_email
-                mode: 'rectangle'
-                hint_text: 'E-mail'
-                size_hint_x: .7
-                pos_hint: {'center_x':.5, 'center_y': .7}
-                radius: [10,10,0,0]
-            MDTextField
-                id: tf_senha
-                mode: 'rectangle'
-                hint_text: 'Senha'
-                size_hint_x: .7
-                pos_hint: {'center_x':.5, 'center_y': .6}
-                radius: [10,10,10,10]
+                        MDGridLayout:
+                            id: lista_entradas
+                            cols: 1
+                            spacing: 17
+                            size_hint_y: None
+                            size_hint_x: .8
+                            pos_hint: {'center_x':.5}
+                            height: self.minimum_height
 
-            MDRaisedButton
-                text: 'Cadastrar'
-                pos_hint: {'center_x':.5, 'center_y': .5}
-                on_release: app.cadastro()
+                            MDTextField
+                                id: tf_categoria
+                                mode: 'fill'
+                                size_hint_x: .4
+                                radius: [20,20,20,20]
+                                hint_text: 'Grupo:'
+                                on_focus:
+                                    if self.focus: root.escolher_categoria()
 
 
+                            MDTextField
+                                id: tf_modelo
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Modelo:'
+                                size_hint_x: .7
+
+                            MDTextField
+                                id: tf_placa
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Placa:'
+                                max_text_length: 7
+                                size_hint_x: .7
+
+                            MDTextField
+                                id: tf_ano
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Ano:'
+                                max_text_length: 4
+                                size_hint_x: .7
+
+                            MDTextField
+                                id: tf_cor
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Cor:'
+                                size_hint_x: .7
+
+                            MDTextField
+                                id: tf_combustivel
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Combustivel:'
+                                size_hint_x: .7
+                                on_focus:
+                                    if self.focus: root.escolher_combustivel()
+
+                            MDTextField
+                                id: tf_preco
+                                mode: 'fill'
+                                radius: [20,20,20,20]
+                                hint_text: 'Preço:'
+                                size_hint_x: .7
+                                pos_hint: {'center_x':.5}
+                            MDFloatLayout:
+                                size_hint_y: None
+                                MDRaisedButton
+                                    id: btn_enviar
+                                    text: 'Enviar foto'
+                                    size_hint_x: None
+                                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                    font_style: 'H6'
+                                    md_bg_color: 'gray'
+                                    on_release: root.enviar_foto()
+                            MDFloatLayout:
+                                size_hint_y: .1
+                                MDRaisedButton
+                                    text: 'Cadastrar'
+                                    size_hint_x: None
+                                    width: self.parent.width * .7
+                                    pos: self.parent.pos
+                                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                                    font_style: 'H6'
+                                    md_bg_color: 0.207843, 0.207843, 0.710784, 1
+                                    on_release: root.cadastro()
 
 
-        MDBoxLayout
-            size_hint_x: 1
-            size_hint_y: .1
+                            MDLabel:
+                                text: ''
+                                size_hint_y:.2
+                                halign: 'center'
+                                font_style: 'H5'
 
-            MDFloatLayout
-                id: menu_bottom
-                md_bg_color: 0,1,1,1
-                MDIconButton:
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    icon: 'menu'
-                    icon_size: '48sp'
+                            MDLabel:
+                                text: ''
+                                size_hint_y:.2
+                                halign: 'center'
+                                font_style: 'H5'
 
-            MDFloatLayout
-                md_bg_color: 1,0,1,1
-                MDIconButton:
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    icon: 'home'
-                    icon_size: '48sp'
 
-            MDFloatLayout
-                md_bg_color: 0,1,1,1
-                MDIconButton:
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    icon: 'car'
-                    icon_size: '48sp'
+
+
+            MDBoxLayout:
+                id: Barra_inferior
+                size_hint: 1, .1
+                md_bg_color: [0.207,0.207,0.710,1]
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: 'home-outline'
+                        icon_size: dp(30)
+                        theme_icon_color: 'Custom'
+                        icon_color: (0.886,0.322,0.270,1)
+                        pos_hint: {'center_x':.5,'center_y':.6}
+                    MDTextButton:
+                        text: 'Home'
+                        pos_hint: {'center_x':.5,'center_y':.2}
+                        theme_text_color: 'Custom'
+                        text_color: (0.886,0.322,0.270,1)
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: 'magnify'
+                        icon_size: dp(30)
+                        theme_icon_color: 'Custom'
+                        icon_color: (0.886,0.322,0.270,1)
+                        pos_hint: {'center_x':.5,'center_y':.6}
+                    MDTextButton:
+                        text: 'Procurar'
+                        pos_hint: {'center_x':.5,'center_y':.2}
+                        theme_text_color: 'Custom'
+                        text_color: (0.886,0.322,0.270,1)
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: 'map-outline'
+                        icon_size: dp(30)
+                        theme_icon_color: 'Custom'
+                        icon_color: (0.886,0.322,0.270,1)
+                        pos_hint: {'center_x':.5,'center_y':.6}
+                        on_release:
+                            root.ir_mapa()
+
+                    MDTextButton:
+                        text: 'Mapa'
+                        pos_hint: {'center_x':.5,'center_y':.2}
+                        theme_text_color: 'Custom'
+                        text_color: (0.886,0.322,0.270,1)
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: 'car-search-outline'
+                        icon_size: dp(30)
+                        theme_icon_color: 'Custom'
+                        icon_color: (0.886,0.322,0.270,1)
+                        pos_hint: {'center_x':.5,'center_y':.6}
+                        on_release:
+                            root.ir_cadastro()
+                    MDTextButton:
+                        text: 'Cadastrar'
+                        pos_hint: {'center_x':.5,'center_y':.2}
+                        theme_text_color: 'Custom'
+                        text_color: (0.886,0.322,0.270,1)
